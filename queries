@@ -1,0 +1,83 @@
+-- SQLite
+-- Select EVerything
+-- SELECT column_name, another_column FROM table_name (always plural)
+
+-- SELECT * FROM doctors;
+
+-- SELECT first_name, last_name FROM doctors;
+
+
+-- WHERE to specify conditions
+-- SELECT * FROM doctors WHERE specialty = 'Psychology';
+-- SELECT * FROM doctors WHERE age >= 30;
+
+-- % allows characters to come before or after
+-- SELECT * FROM doctors
+-- WHERE first_name LIKE '%b%'
+-- ORDER BY age DESC;
+
+-- Accumulator
+-- COUNT()
+-- SELECT COUNT(*) FROM doctors;
+-- AVG() / ROUND(x, digits)
+-- SELECT ROUND(AVG(age), 0) FROM doctors;
+
+-- SELECT specialty, COUNT(*) FROM doctors
+-- WHERE specialty = 'Psychology';
+
+-- Use accumulators with group by
+-- SELECT COUNT(*) AS c, specialty FROM doctors
+-- GROUP BY specialty
+-- ORDER BY c DESC;
+-- SELECT COUNT(*) c, specialty s FROM doctors
+-- GROUP BY s
+-- ORDER BY c DESC;
+
+-- JOIN table
+-- JOIN table_name ON what do they have in common?
+-- one foreign key and one primary key
+-- SELECT * FROM doctors
+-- JOIN appointments ON appointments.doctor_id = doctors.id;
+
+-- Read all patients first & last names along with their appointment dates
+-- SELECT patients.first_name, patients.last_name, appointments.occurs_on
+-- FROM appointments
+-- JOIN patients ON patients.id = appointments.patient_id;
+
+-- Read Dylan's appointments dates along with his patients first name & last name
+-- SELECT patients.first_name, patients.last_name, appointments.occurs_on
+-- FROM appointments
+-- JOIN patients ON patients.id = appointments.patient_id
+-- JOIN doctors ON doctors.id = appointments.doctor_id
+-- WHERE doctors.id = 1
+-- ORDER BY patients.last_name ASC
+-- LIMIT 2;
+
+
+-- CREATE -> Insert into
+-- INSERT INTO table_name (column_name. column_name)
+-- VALUES (value, value);
+-- INSERT INTO doctors (first_name, last_name, age, specialty)
+-- VALUES ('Gregory', 'House', 49, 'Generalist');
+
+-- UPDATE -> update
+-- UPDATE doctors
+-- SET age = 15
+-- WHERE id = 14;
+
+-- https://www.airbnb.com/rooms/1131089498040701183
+
+-- SELECT * FROM rooms
+-- WHERE id = 1131089498040701183;
+
+
+-- DELETE FROM doctors
+-- WHERE id = 15;
+
+SELECT * FROM doctors
+WHERE specialty = 'Chemistry'
+OR specialty = 'Psychology';
+
+-- SELECT * FROM doctors
+-- WHERE specialty = 'Chemistry'
+-- AND age = 45;
